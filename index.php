@@ -1,6 +1,6 @@
 <?php
 require_once 'vendor/autoload.php';
-require_once('config/database.php');
+require_once('config/DBConnection.php');
 
 //tự động load class khi cần sd
 function loader($className)
