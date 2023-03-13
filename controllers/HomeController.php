@@ -34,9 +34,9 @@ public function detail()
 public function index_admin()
     {
         $statisticalService = new StatisticalService();
-        //session_start();
-        //if (!isset($_SESSION['check']))
-        //      header('location:?action=login');
+        session_start();
+        if (!isset($_SESSION['check']))
+              header('location:?controller=Member&action=login');
         $array['member'] = $statisticalService->countUser();;
         $array['author'] = $statisticalService->countAuthor();;
         $array['category'] =  $statisticalService->countCategory();;

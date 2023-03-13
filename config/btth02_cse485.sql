@@ -3,9 +3,9 @@
 -- https://www.phpmyadmin.net/
 --
 -- Máy chủ: 127.0.0.1
--- Thời gian đã tạo: Th3 03, 2023 lúc 07:04 PM
+-- Thời gian đã tạo: Th3 13, 2023 lúc 07:57 AM
 -- Phiên bản máy phục vụ: 10.4.27-MariaDB
--- Phiên bản PHP: 8.0.25
+-- Phiên bản PHP: 8.2.0
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -67,18 +67,18 @@ INSERT INTO `baiviet` (`ma_bviet`, `tieude`, `ten_bhat`, `ma_tloai`, `tomtat`, `
 CREATE TABLE `nguoidung` (
   `ma_ngdung` int(10) UNSIGNED NOT NULL,
   `ten_dnhap` varchar(50) NOT NULL,
-  `mat_khau` varchar(20) NOT NULL
+  `mail` varchar(50) NOT NULL,
+  `mat_khau` varchar(500) NOT NULL,
+  `makichhoat` varchar(500) NOT NULL,
+  `kichhoat` tinyint(1) NOT NULL DEFAULT 0
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Đang đổ dữ liệu cho bảng `nguoidung`
 --
 
-INSERT INTO `nguoidung` (`ma_ngdung`, `ten_dnhap`, `mat_khau`) VALUES
-(1, 'nguyenvanduy', '123456'),
-(2, 'nguyenthihaphuong', '456789'),
-(3, 'buituanminh', 'abcdef'),
-(4, 'nguyendangkhoa', 'ghiklm');
+INSERT INTO `nguoidung` (`ma_ngdung`, `ten_dnhap`, `mail`, `mat_khau`, `makichhoat`, `kichhoat`) VALUES
+(1, 'admin', 'tuanbq12@gmail.com', '$2y$10$7Y/6g3MZbI/z6vcQ2RkkROoPhxZuYxcIQ1cngCBXvO3DFGZxVK1/m', '2986926f214a237893f0609a15741cab', 1);
 
 -- --------------------------------------------------------
 
@@ -175,7 +175,7 @@ ALTER TABLE `baiviet`
 -- AUTO_INCREMENT cho bảng `nguoidung`
 --
 ALTER TABLE `nguoidung`
-  MODIFY `ma_ngdung` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `ma_ngdung` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=19;
 
 --
 -- AUTO_INCREMENT cho bảng `tacgia`
