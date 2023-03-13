@@ -1,5 +1,5 @@
 <?php 
-
+    
 
     class ArticleService{
         public function getAllArticles(){
