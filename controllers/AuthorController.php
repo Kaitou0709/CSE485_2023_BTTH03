@@ -48,13 +48,12 @@
         }
 
         public function delete_author() {
-            $authorService = new AuthorService();
+        $authorService = new AuthorService();
         $ma_tgia = filter_input(INPUT_GET, 'id', FILTER_VALIDATE_INT);
-        if(isset($_POST['submit'])){
-            $array['mess'] = "Ban co chac muon xoa tac gia nay ?"; 
-                $array['display'] = true;
+        $array['mess'] = "Ban co chac muon xoa tac gia nay ?"; 
+        $array['display'] = true;
+        if(isset($_POST['submit'])){    
             $authorService->delete($ma_tgia);
-            
             header("location:?controller=author");
         }
             
