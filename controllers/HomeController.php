@@ -13,6 +13,7 @@ class HomeController
     public function index()
     {
         $articleService = new ArticleService();
+        $categoryService = new CategoryService();
 
         $articles = $articleService->getAllArticles();
         echo $this->twig->render('home/index.html', ["articles" => $articles]);
