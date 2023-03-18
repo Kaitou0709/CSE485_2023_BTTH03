@@ -82,7 +82,7 @@
             $conn = $dbconn->getConnection();
 
             $sql = "INSERT INTO `baiviet` (`ma_bviet`, `tieude`, `ten_bhat`, `ma_tloai`, `tomtat`, `noidung`, `ma_tgia`, `ngayviet`, `hinhanh`) 
-            VALUES (:title, :nameSong, (SELECT ma_tloai FROM theloai WHERE ten_tloai = :category), 
+            VALUES (Null, :title, :nameSong, (SELECT ma_tloai FROM theloai WHERE ten_tloai = :category), 
             :summary, :content, (SELECT ma_tgia FROM tacgia WHERE ten_tgia = :author), :date_post, :image_article)";
             $statment = $conn->prepare($sql);
             $statment->execute($arguments);
@@ -94,7 +94,7 @@
             $conn = $dbconn->getConnection();
             
             $sql = "UPDATE baiviet SET tieude = :title, ten_bhat = :nameSong, ma_tloai = (SELECT ma_tloai FROM theloai WHERE ten_tloai = :category),
-            tomtat = :summary', noidung = :content, ma_tgia = (SELECT ma_tgia FROM tacgia WHERE ten_tgia = :author), hinhanh = :image_article WHERE ma_bviet = :id";
+            tomtat = :summary, noidung = :content, ma_tgia = (SELECT ma_tgia FROM tacgia WHERE ten_tgia = :author), hinhanh = :image_article WHERE ma_bviet = :id";
             $statment = $conn->prepare($sql);
             $statment->execute($arguments);
             $conn = null;

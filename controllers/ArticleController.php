@@ -18,10 +18,10 @@
 
         public function add_article(){
             $articleService = new ArticleService();
-            // $categoryService = new CategoryService();
-            // $categories = $categoryService->getAllCategories();
-            // $authorService = new AuthorService();
-            // $authors = $authorService->getAllAuthors();
+            $categoryService = new CategoryService();
+            $categories = $categoryService->getAllCategories();
+            $authorService = new AuthorService();
+            $authors = $authorService->getAllAuthors();
             date_default_timezone_set('Asia/Ho_Chi_Minh');
             $date_post = date('Y-m-d H:i:s');
             if(isset($_POST['add'])){
@@ -71,8 +71,8 @@
 
             }
             echo $this->twig->render("article/add_article.html",[
-                // 'categories' => $categories,
-                // 'authors' => $authors,
+                'categories' => $categories,
+                'authors' => $authors,
                 "date_post"=>$date_post,
                 'mess' => $_GET["mess"] ?? "",
             ]);
@@ -83,10 +83,10 @@
             $id = filter_input(INPUT_GET, 'id', FILTER_VALIDATE_INT);
             $articleService = new ArticleService();
             $article = $articleService->getArticleId($id);
-            // $categoryService = new CategoryService();
-            // $categories = $categoryService->getAllCategories();
-            // $authorService = new AuthorService();
-            // $authors = $authorService->getAllAuthors();
+            $categoryService = new CategoryService();
+            $categories = $categoryService->getAllCategories();
+            $authorService = new AuthorService();
+            $authors = $authorService->getAllAuthors();
             date_default_timezone_set('Asia/Ho_Chi_Minh');
             $title = trim($_POST['txtTitle'] ?? '');
             $nameSong = trim($_POST['txtSongName'] ?? '');
@@ -109,15 +109,15 @@
                         }
                         else{
                             if(in_array($ext, $extensions)){
-                                move_uploaded_file($_FILES['image']['tmp_name'], 'assets/images/songs'.$newImage);
-                            }
+                                move_uploaded_file($_FILES['image']['tmp_name'], 'assets/'.$newImage);
+                            }   
                             else{
                                 $mess = "Hình ảnh chỉ nhận file: .png, .jpg";
                                 header("location:?controller=article");
                                 die();
                             }
                         }
-
+                        $arguments['id'] = $id;
                         $arguments['title'] = $title;
                         $arguments['nameSong'] = $nameSong;
                         $arguments['category'] = $category;
@@ -136,7 +136,9 @@
                     
                 }
         echo $this->twig->render("article/edit_article.html", ["article" => $article,
-                
+                "authors" => $authors,
+                "categories" => $categories, 
+                'mess' => $_GET["mess"] ?? "",
         ]);
     }
 

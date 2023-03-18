@@ -48,8 +48,9 @@
                     
                     <select name="category" id="category">
                         <option value=""></option>
-                        
-                            <option value=""></option>
+                        {% for category in categories %}
+                            <option value="{{category.getNameCategory}}">{{category.getNameCategory}}</option>
+                        {%endfor%}
                         
                     </select>
                 </div>
@@ -59,9 +60,9 @@
                     <label for="author" style="margin-right: 19px;">Tên tác giả</label>
                     <select name="author" id="author" >
                             <option value=""></option>
-                                 
-                            <option value=""></option>
-                            
+                            {% for author in authors %}
+                            <option value="{{author.getNameAuthor}}">{{author.getNameAuthor}}</option>
+                            {%endfor%}
                     </select>
                 </div>
                 
